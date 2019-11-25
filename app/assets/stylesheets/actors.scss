@@ -1,0 +1,113 @@
+// Place all the styles related to the Actors controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+
+.parent {
+    width: 100%;
+    height:90px;
+    overflow: hidden;
+    overflow-x: scroll;
+    /* background: yellow; */
+    white-space:nowrap;
+}
+.child {
+    background-color: #ccc;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: top;
+    width: 70px;
+    height:70px;
+    
+     
+        /*background: red;*/
+}
+
+.child i{
+
+    font-size: 32px;
+    position: absolute;
+}
+
+.child-1 {
+    background-color: #ccc;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: top;
+    width: 100%;
+    height:290px;
+    outline: 4px dashed rgba(255,255,255,0.8); 
+    outline-offset: -8px; 
+    /*background: red;*/
+   // background-image: url(/images/upload.jpg);
+}
+.child-1 p{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 287px;
+    color: #ffffff;
+    font-family: Arial;
+    position: absolute;
+    font-size: 23px;
+}
+.child-1 i{
+
+    font-size: 54px;
+    padding-bottom: 106px;
+    position: absolute;
+}
+
+
+
+.child-2 {
+    background-color: #ccc;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: top;
+    width: 70px;
+    height:70px;
+    
+    outline: 2px dashed rgba(255,255,255,0.8); 
+    outline-offset: -4px; 
+     background-image: url(/images/cloud.png);
+     background-repeat: no-repeat;
+    background-position-x: 17px;
+    background-position-y: 20px; 
+     /*background: red;*/
+}
+
+.child-2 i{
+
+    font-size: 32px;
+    position: absolute;
+}
+
+
+
+.parent_video {
+    width: 100%;
+    height:310px;
+   // overflow: hidden;
+    overflow-x: scroll;
+    /* background: yellow; */
+    white-space:nowrap;
+}
+.child_video {
+    padding-left: 64px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: top;
+    width: 406px;
+    height:249px;
+    
+     
+        /*background: red;*/
+}

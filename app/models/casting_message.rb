@@ -1,0 +1,2 @@
+class CastingMessage < ApplicationRecord
+end

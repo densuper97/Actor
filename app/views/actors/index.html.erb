@@ -1,0 +1,632 @@
+<head>
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
+
+	<%# <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script> 
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+	<link rel="stylesheet" type="text/css" href="Actor_page/Actor_page_css/font_and_scrol.css"> %>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+
+<!-- (Optional) Latest compiled and minified JavaScript translation files -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/i18n/defaults-*.min.js"></script>
+</head>
+<style>
+.btn-12 {
+    border: none;
+    background-color: inherit;
+    padding: 8px 11px;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
+    transition: all 0.5s;
+}
+.btn-12 a{
+    text-decoration:none;
+    color: black!important;
+}
+.btn-12 a:hover{
+    text-decoration:none;
+    color: black!important;
+}
+.btn-12 span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+.btn-12 span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+    color:black!important;
+}
+.btn-12:hover span {
+    padding-right: 25px;
+}
+.btn-12:hover span:after {
+	        padding: 7px;
+    opacity: 1;
+    right: 0;
+}
+
+.card_manager {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	max-width: 250px;
+	margin: auto;
+	text-align: center;
+	font-family: arial;
+	float: right;
+	margin-top: 20px;
+	width: 160px;
+	margin-bottom: -82px;
+	height: 100px;
+}
+
+.title-1 {
+	color: grey;
+	font-size: 18px;
+}
+
+#a_manager {
+	text-decoration: none;
+	font-size: 22px;
+	color: black;
+}
+
+div.actorimage:hover img{
+    opacity:0.5;
+}
+div.actorimage:hover input {
+    display: block;
+}
+div.actorimage input {
+    position:absolute;
+    display:none;
+}
+div.show-image input.delete {
+    top:0;
+    left:79%;
+}
+</style>
+
+<script>
+	var input = document.querySelectorAll('input');
+    for(i=0; i<input.length; i++){
+    	input[i].setAttribute('size',input[i].getAttribute('placeholder').length);
+    }
+</script>
+
+<div class="w3-light-grey">
+	<!-- Page Container -->
+	<div class="w3-content w3-margin-top" style="max-width:1400px;  padding-top: 20px;">
+		<!-- The Grid -->
+		<div class="w3-row-padding">
+			<!-- Left Column -->
+			<div class="w3-third">
+				<div class="w3-white w3-text-grey w3-card-4">
+					<div class="w3-display-container">
+						<div class="container-1">
+							<img id="expandedImg" style="width:100%">
+						</div>
+						<% if !@actor.photos.empty? %>
+							<%= image_tag @actor.photos[0].url, :style=>"width:100%" %>
+						<% else %>
+						<div class="child-1">
+						<i class="material-icons">cloud_download</i>
+						<p>Download image</p>
+							<% if @mode == :actor || @mode == :manager %>
+								<%= form_for @actor do |f| %>
+									<div class='form-group'>
+										<%= f.hidden_field :id, value: @actor.id %>
+										<%= f.file_field :photos, multiple: true, :onchange => "autoSubmit(this)", class:"child-1", :style=>"opacity:0"%>
+									</div>
+								<% end %>
+							<% end %>
+							</div>
+						<% end %>
+							
+					</div>
+				
+
+					<div class="w3-container" style="padding-top:10px;">
+					
+						<div class="parent">
+						<% if @mode == :actor || @mode == :manager %>
+									
+									<div class="child-2">
+									
+					
+
+										<%= form_for @actor do |f| %>
+											<div class='form-group'>
+												<%= f.hidden_field :id, value: @actor.id %>
+												<%= f.file_field :photos, multiple: true, :onchange => "autoSubmit(this)",  :style=>"opacity:0", class:"child" %>
+											</div>
+										<% end %>
+									</div>
+								<% end %>
+							<% if !@actor.photos.empty? %>
+								<% @actor.photos.each_with_index do |photo, index| %>
+									<div class="child" style="width:70px; height:70px;" >
+									 <div class= "actorimage" style="width;100%; ">
+									 <%= link_to(image_tag(@actor.photos[index].url, style: 'width:100%;'), @actor.photos[index].url,"data-lightbox" => 'roadtrip') %>
+									 <%= button_to "delete", {:controller => :actor_photos, :action => 'destroy', :id => @actor.id ,:index => index },class: "delete", :method => :delete %>
+									 
+										</div>
+									</div>
+								<% end%>
+								
+							<% end %>
+						</div>
+					</div>
+
+					<div class="w3-container" style="padding-top:10px;">
+						<p>
+							<div class="row">
+								<div class="col-1">
+									<i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>
+								</div>
+								<div class="col">
+									<span><%= @user.email %></span>
+								</div>
+							</div>
+						</p>
+						<p>
+							<div class="row">
+								<div class="col-1">
+									<i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i>
+								</div>
+								<div class="col">
+									<%= form_for @actor do |f| %>
+										<%= f.hidden_field :id, value: @actor.id %>
+										<%= f.phone_field :phone, placeholder: "Enter your phone number", :onblur => "autoSubmit(this)", style: "display:none" %>
+										<span onclick="showEnterField(this, 'actor_phone')" style=" <%= @actor.location.nil? ? "color:red;     border-bottom-style: solid;    border-bottom-width: 2px;" : "" %>"><%= @actor.phone.blank? ? "Enter your phone number" : @actor.phone %></span>
+									<% end %>
+								</div>
+							</div>
+						</p>
+						<p>
+							<div class="row">
+								<div class="col-1">
+									<i class="fa fa-calendar fa-fw w3-margin-right w3-large w3-text-teal"></i>
+								</div>
+								<div class="col">
+									
+										<%= form_for @actor do |f| %>
+											<%= f.hidden_field :id, value: @actor.id %>
+											<%= f.date_field :birth_date, :onblur => "autoSubmit(this)", style: "display:none; margin-right:10px" %>
+											<span onclick="showEnterField(this, 'actor_birth_date')" style="margin-right:10px;  <%= @actor.location.nil? ? "color:red!important;     border-bottom-style: solid;    border-bottom-width: 2px;" : "" %>"><%= @actor.birth_date.nil? ? "Enter your birth date" : @actor.birth_date %></span>
+										<% end %>
+								</div>
+							</div>
+						</p>
+						<hr>
+						<br>
+						<br>
+					</div>
+				</div>
+				<br>
+
+				<!-- End Left Column -->
+			</div>
+
+			<!-- Right Column -->
+			<div class="w3-twothird">
+				<div class="w3-container w3-card w3-white w3-margin-bottom edit_button ">
+					<a target="_blank" href="https://www.google.com">
+						<i class="material-icons frg" id="qwe"></i>
+					</a>
+					<div class="card_manager">
+						<span class="title-1">Manager</span>
+						<div class="row">
+							<div class="col-1">
+								<i class="fa fa-user fa-fw w3-margin-right w3-large w3-text-teal"></i>
+							</div>
+							<div class="col" style="padding-left: 21px; text-align: left;">
+								<span><%= @actors_manager ? @actors_manager.simple_full_name : "" %></span>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-1">
+								<i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>
+							</div>
+							<div class="col" style="padding-left: 21px; text-align: left;">
+								<span><%= @actors_manager ? @actors_manager.email : "" %></span>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-1">
+								<i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i>
+							</div>
+							<div class="col" style="padding-left: 21px; text-align: left;">
+								<span><%= @actors_manager ? @actors_manager.phone : "" %></span>
+							</div>
+						</div>
+						<%# <div>
+							<a id="a_manager" href="#">
+								<i class="fa fa-twitter"></i>
+							</a>
+							<a id="a_manager" href="#">
+								<i class="fa fa-facebook"></i>
+							</a>
+						</div> %>
+					</div>
+					<h2 class="w3-text-grey w3-padding-16 ">
+						<div class="row">
+							<div class="col-1">
+								<i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>
+							</div>
+							<div class="col">
+								<%= form_for @actor do |f| %>
+									<%= f.hidden_field :id, value: @actor.id %>
+									<%= f.text_field :full_name, placeholder: "Иванов Иван Иванович", :onblur => "autoSubmit(this)", style: "display:none" %>
+									<span onclick="showEnterField(this, 'actor_full_name')" style="margin-left: 15px; <%= @actor.location.nil? ? "color:red;     border-bottom-style: solid;    border-bottom-width: 2px;" : "" %>"><%= @actor.full_name.blank? ? "Enter your full name" : @actor.full_name %></span>
+								<% end %>
+							</div>
+						</div>
+							<%# <button class="btn-favorite btn-primary-favorite btn-fab-favorite btn-round-favorite" style="background-color:#fff">
+								<i class="material-icons" style="padding-top: 6px; color:#ff0000 ">favorite</i>
+								<div class="ripple-container"></div>
+							</button> %>
+							<% if @mode == :actor %>
+								<% if @actor.is_confirmed? %>
+									<span class="glyphicon glyphicon-ok" style="font-size:25px; color:#22b934"></span>
+								<% elsif @actor.is_confirming? %>
+									<%= button_to "Cancel confirmation", { controller: :actors, action: :update_confirmation, params: { actor: {id: @actor.id, action: :cancel_confirmation} } }, method: :post, class: 'btn btn-primary' %>
+								<% elsif !@actor.is_confirmed? %>
+									<%= button_to "Send to confirmation", { controller: :actors, action: :update_confirmation, params: { actor: {id: @actor.id, action: :send_to_confirmation} } }, method: :post, class: 'btn btn-primary' %>
+								<% end %>
+							<% elsif @mode == :manager %>
+								<% if @actor.is_confirmed? %>
+									<span class="glyphicon glyphicon-ok" style="font-size:25px; color:#22b934"></span>
+								<% elsif @actor.is_confirming? %>
+									<%= button_to "Send to refinement", { controller: :actors, action: :update_confirmation, params: { actor: {id: @actor.id, action: :cancel_confirmation} } }, method: :post, class: 'btn btn-primary' %>
+									<%= button_to "Confirm profile", { controller: :actors, action: :update_confirmation, params: { actor: {id: @actor.id, action: :approve_confirmation} } }, method: :post, class: 'btn btn-primary' %>
+								<% elsif !@actor.is_confirmed? %>
+									<span class="glyphicon glyphicon-remove" style="font-size:25px; color:#fd0000"></span>
+								<% end %>
+							<% end %>
+							
+					</h2>
+
+					<div class="w3-container">
+						<h6 class="w3-text-teal">
+							<div class="row" style="margin-bottom: 12px;">
+								<div class="col">
+									<div class="row">
+										<i class="fa fa-etsy" style="margin-right:5px"></i>
+										<span style="padding-right: 5px;">Ethnos:</span>
+										<%= form_for @actor do |f| %>
+											<%= f.hidden_field :id, value: @actor.id %>
+											<%= f.text_field :location, placeholder: "Enter your ethnos", :onblur => "autoSubmit(this)", style: "display:none; margin-right:10px" %>
+                                   <span onclick="showEnterField(this, 'actor_location')" style="margin-right:10px; <%= @actor.location.nil? ? "color:red;    border-bottom-style: solid;   border-bottom-width: 2px;" : "" %>"><%= @actor.location.nil? ? "Enter your ethnos" : @actor.location %></span>									
+								   	<% end %>
+									</div>
+								</div>
+								<div class="col">
+									<div class="row">  
+										<i class="fa fa-user" style="margin-right:5px"></i>
+										<span style="margin-right:5px">Sm:</span>
+										<%= form_for @actor do |f| %>
+											<%= f.hidden_field :id, value: @actor.id %>
+											<%= f.number_field :height, placeholder: "Enter your height", :onblur => "autoSubmit(this)", :onchange => "inchConverter(this.value)", :oninput => "inchConverter(this.value)", style: "display:none; margin-right:10px" %>
+											<span id="span_height" onclick="showEnterField(this, 'actor_height')" style="margin-right:10px;  <%= @actor.location.nil? ? "color:red;     border-bottom-style: solid;    border-bottom-width: 2px;" : "" %>"><%= @actor.height.blank? ? "Enter your height" : @actor.height  %></span>
+										<% end %>
+										<span style="margin-right:5px">Inch:</span>
+										<span id="outputINCH"></span>
+										
+									</div>
+									
+								</div>
+								</div>
+								<div class=row>
+								<div class="col">
+									<div class="row">
+										<i class="fa fa-home" style="margin-right:5px"></i>
+										<span style="padding-right: 5px;">Location:</span>
+
+										<%= form_for @actor do |f| %>
+											<%= f.hidden_field :id, value: @actor.id %>
+											<%= f.text_field :location, placeholder: "Coutry, City", :onblur => "autoSubmit(this)", style: "display:none; margin-right:10px" %>
+                                   <span onclick="showEnterField(this, 'actor_location')" style="margin-right:10px; <%= @actor.location.nil? ? "color:red;     border-bottom-style: solid;    border-bottom-width: 2px;" : "" %>"><%= @actor.location.nil? ? "Enter your location" : @actor.location %></span>									
+										<% end %>
+									</div>
+								</div>
+								
+								<div class="col">
+									<div class="row">
+										<i class="fa fa-address-card" style="margin-right:5px"></i>
+										<span style="padding-right: 5px;">Playing age:</span>
+
+										<%= form_for @actor do |f| %>
+											<%= f.hidden_field :id, value: @actor.id %>
+											<%= f.text_field :location, placeholder: "Your play age", :onblur => "autoSubmit(this)", style: "display:none; margin-right:10px" %>
+                                   <span onclick="showEnterField(this, 'actor_location')" style="margin-right:10px; <%= @actor.location.nil? ? "color:red;     border-bottom-style: solid;    border-bottom-width: 2px;" : "" %>"><%= @actor.location.nil? ? "Enter your playing age" : @actor.location %></span>									
+										<% end %>
+									</div>
+								</div>
+								
+							</div>
+						</h6>
+
+						<span>Do you have any citizenship or visa right now or in process?</span>
+						<table class="table">
+							<thead>
+								<tr>
+									<th>
+										<select class="selectpicker" id="selectpicker1" data-live-search="true" data-width="fit">
+    <option data-tokens="usa" selected>Выберите</option>
+
+  <option data-tokens="usa">usa</option>
+  <option data-tokens="Russia">Russia</option>
+  <option data-tokens="Spain">Spain</option>
+</select>
+<script>$('#selectpicker1').selectpicker({
+  style: 'btn-info',
+  size: 5
+});
+</script>
+
+									</th>
+									<th>Гражданство</th>
+									<th>Visa</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><select class="selectpicker"   data-live-search="true" data-width="fit">
+    <option data-tokens="usa" selected>Выберите</option>
+
+  <option data-tokens="usa">usa</option>
+  <option data-tokens="Russia">Russia</option>
+  <option data-tokens="Spain">Spain</option>
+</select></td>
+									<td>
+
+										<input style="margin-left: 40px;" type="checkbox" class="form-check-input" value="">
+
+									</td>
+									
+									
+									
+									
+									<td>
+									<div class="row">
+									<div class="col">
+										<select class="selectpicker" data-live-search="true" data-width="fit">
+    <option data-tokens="usa" selected>Выберите</option>
+
+  <option data-tokens="usa">usa</option>
+  <option data-tokens="Russia">Russia</option>
+  <option data-tokens="Spain">Spain</option>
+</select>
+</div>
+<div class="col">
+										<input style="margin-left:24px;" type="checkbox" class="form-check-input" value="">
+									</div>
+									<div class="col">
+										<div class="form-group">
+											<input style="width: 145px;" type="date" name="bday" min="1000-01-01" max="3000-12-31" class="form-control">
+										</div>
+										</div>
+										</div>
+									</td>
+
+
+
+
+
+
+
+
+
+								</tr>
+								<tr>
+									<td><select class="selectpicker" data-live-search="true" data-width="fit">
+    <option data-tokens="usa" selected>Выберите</option>
+
+  <option data-tokens="usa">usa</option>
+  <option data-tokens="Russia">Russia</option>
+  <option data-tokens="Spain">Spain</option>
+</select></td>
+									<td>
+
+										<input style="margin-left: 40px;" type="checkbox" class="form-check-input" checked="checked">
+
+									</td>
+									<td>
+									<div class="row">
+									<div class="col">
+										<select class="selectpicker" data-live-search="true" data-width="fit">
+    <option data-tokens="usa" selected>Выберите</option>
+
+  <option data-tokens="usa">usa</option>
+  <option data-tokens="Russia">Russia</option>
+  <option data-tokens="Spain">Spain</option>
+</select>
+</div>
+<div class="col">
+										<input style="margin-left:24px;" type="checkbox" class="form-check-input" value="">
+										</div>
+										<div class="col">
+										<div class="form-group">
+											<input style="width: 145px;" type="date" name="bday" min="1000-01-01" max="3000-12-31" class="form-control">
+										</div>
+										</div>
+										</div>
+									</td>
+								</tr>
+
+							</tbody>
+						</table>
+						<table class="table" style="width:22%">
+    <thead>
+      <tr>
+        <th>Language
+			
+		</th>
+        <th>Accent</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><select class="selectpicker" data-live-search="true" data-width="fit">
+    <option data-tokens="usa" selected>Выберите язык</option>
+
+  <option data-tokens="usa">usa</option>
+  <option data-tokens="Russia">Russia</option>
+  <option data-tokens="Spain">Spain</option>
+</select></td>
+        <td><select class="selectpicker" data-live-search="true" data-width="fit">
+    <option data-tokens="usa" selected>Выберите акцент</option>
+
+  <option data-tokens="usa">usa</option>
+  <option data-tokens="Russia">Russia</option>
+  <option data-tokens="Spain">Spain</option>
+</select></td>
+      </tr>
+      <tr>
+        <td><select class="selectpicker" data-live-search="true" data-width="fit">
+    <option data-tokens="usa" selected>Выберите язык</option>
+
+  <option data-tokens="usa">usa</option>
+  <option data-tokens="Russia">Russia</option>
+  <option data-tokens="Spain">Spain</option>
+</select></td>
+                <td><select class="selectpicker" data-live-search="true" data-width="fit">
+    <option data-tokens="usa" selected>Выберите акцент</option>
+
+  <option data-tokens="usa">usa</option>
+  <option data-tokens="Russia">Russia</option>
+  <option data-tokens="Spain">Spain</option>
+</select></td>
+
+      </tr>
+      <tr>
+        <td><select class="selectpicker" data-live-search="true" data-width="fit">
+    <option data-tokens="usa" selected>Выберите язык</option>
+
+  <option data-tokens="usa">usa</option>
+  <option data-tokens="Russia">Russia</option>
+  <option data-tokens="Spain">Spain</option>
+</select></td>
+               <td><select class="selectpicker" data-live-search="true" data-width="fit">
+    <option data-tokens="usa" selected>Выберите а</option>
+
+  <option data-tokens="usa">usa</option>
+  <option data-tokens="Russia">Russia</option>
+  <option data-tokens="Spain">Spain</option>
+</select></td>
+
+      </tr>
+    </tbody>
+  </table>
+
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<strong>Upload Videos</strong>
+							</div>
+							
+							<div class="panel-body">
+								<div class="parent_video">
+									<% if !@actor.videos.empty? %>
+										<div class="row">
+
+											<% @actor.videos.each_with_index do |video, index| %>
+												<div class="col-sm">
+												<div class="child_video">
+													<%= video_tag video.url, size: "410x247", controls: true %>
+													<% if @mode == :actor || @mode == :manager %>
+														<%= button_to  "delete", {:controller => :actor_videos, :action => 'destroy', :id => @actor.id ,:index => index }, :method => :delete %>
+													
+													<% end %>
+													</div>
+												</div>
+											<% end %>
+										</div>
+									<% else %>
+										<div>
+											You have not videos yet.
+										</div>
+									<% end %>
+								</div>
+								<p/>
+								<% if @mode == :actor || @mode == :manager %>
+									<div>
+										<%= form_for @actor do |f| %>
+											<div class="row">
+												<div class='form-group col-sm'>
+													<%= f.hidden_field :id, value: @actor.id %>
+													<%= f.file_field :videos, multiple: true, :onchange => "autoSubmit(this)" %>
+												</div>
+											</div>
+										<% end %>
+									</div>
+								<% end %>
+							</div>
+						</div>
+						<hr>
+					</div>
+				</div>
+
+				<div class="w3-container w3-card w3-white edit_button">
+					<a target="_blank" href="https://www.google.com">
+						<i class="material-icons frg" id="qwe">build</i>
+					</a>
+					<h2 class="w3-text-grey w3-padding-16">
+						<i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>FEAUTURE</h2>
+					<div class="w3-container">
+						<h5 class="w3-opacity">
+							<b>Фильм</b>
+						</h5>
+						<h6 class="w3-text-teal">
+							<i class="fa fa-calendar fa-fw w3-margin-right"></i>2018</h6>
+						<p>Hunter Killer I Gerard Butler I Gary Oldman</p>
+						<hr>
+					</div>
+					<div class="w3-container">
+						<h5 class="w3-opacity">
+							<b>TV</b>
+						</h5>
+						<h6 class="w3-text-teal">
+							<i class="fa fa-calendar fa-fw w3-margin-right"></i>2018</h6>
+						<p>Genius:Picasso I National Geographic I 20th Century Fox</p>
+						<hr>
+					</div>
+					<div class="w3-container">
+						<h5 class="w3-opacity">
+							<b>THEATER</b>
+						</h5>
+						<h6 class="w3-text-teal">
+							<i class="fa fa-calendar fa-fw w3-margin-right"></i>2017 - 2018</h6>
+						<p>The Audience I Role: Sir Winston Churchill</p>
+						<br>
+					</div>
+				</div>
+				<!-- End Right Column -->
+			</div>
+		</div>
+		<!-- End Grid -->
+	</div>
+	<!-- End Page Container -->
+	</div>
+
+	<footer class="w3-container w3-teal w3-center w3-margin-top">
+		<i class="fa fa-instagram w3-hover-opacity"></i>
+		<i class="fa fa-twitter w3-hover-opacity"></i>
+		<p>&copy; Powered by
+			<a style="color: white;" href="#" target="_blank">Родишев Денис</a>
+		</p>
+	</footer>
+
+</div>

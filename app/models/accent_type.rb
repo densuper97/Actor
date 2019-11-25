@@ -1,0 +1,2 @@
+class AccentType < ApplicationRecord
+end

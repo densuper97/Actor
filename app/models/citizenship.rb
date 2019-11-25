@@ -1,0 +1,2 @@
+class Citizenship < ApplicationRecord
+end

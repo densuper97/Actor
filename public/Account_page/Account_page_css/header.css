@@ -1,0 +1,278 @@
+
+.btn-account {
+    border: none;
+    background-color: inherit;
+    padding: 14px 7px;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
+   transition: all 0.5s;
+}
+.btn-account a{
+    text-decoration:none;
+     color: white;
+}
+.btn-account a:hover{
+    text-decoration:none;
+     color: white;
+}
+
+
+.btn-account span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.btn-account span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+
+}
+
+.btn-account:hover span {
+  padding-right: 25px;
+}
+
+.btn-account:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.edit_button #qwe{
+  position:absolute;
+   top:30px;
+   left: 90%;
+   z-index:-1;
+   transition:all 1s;
+
+ }
+ .edit_button{
+    /*background:url(http://goodfon.org/_ph/64/235694881.jpg);*/
+    /*width:100%;*/
+    /*height:30px;*/
+    position:relative;
+   
+ }
+.edit_button:hover #qwe{
+   left:93%;
+
+   z-index:1;
+   
+   }
+   .frg{
+     
+    color:#009688;
+   }
+
+
+
+
+
+
+
+
+
+
+
+/*Сердечко*/
+
+.btn-favorite {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: 0.46875rem 1rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn-favorite:hover,
+.btn-favorite:focus {
+  text-decoration: none;
+}
+
+.btn-favorite:focus,
+.btn-favorite.focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.62);
+}
+
+.btn-favorite.disabled,
+.btn-favorite:disabled {
+  opacity: 0.65;
+  box-shadow: none;
+}
+
+.btn-favorite:not(:disabled):not(.disabled) {
+  cursor: pointer;
+}
+
+.btn-favorite:not(:disabled):not(.disabled):active,
+.btn-favorite:not(:disabled):not(.disabled).active {
+  background-image: none;
+  box-shadow: none;
+}
+
+.btn-favorite:not(:disabled):not(.disabled):active:focus,
+.btn-favorite:not(:disabled):not(.disabled).active:focus {
+  box-shadow: 0 0 0 0.2rem rgba(33, 150, 243, 0.25), none;
+}
+
+a.btn-favorite.disabled,
+fieldset:disabled a.btn {
+  pointer-events: none;
+}
+
+.btn-primary-favorite {
+  color: #ffffff;
+  /*background-color: #2196f3;*/
+  /*border-color: #2196f3;*/
+  box-shadow: none;
+}
+
+.btn-primary-favorite:hover {
+  color: #ffffff;
+  /*background-color: #0c83e2;*/
+  /*border-color: #0c7cd5;*/
+}
+
+.btn-primary-favorite:focus,
+.btn-primary-favorite.focus {
+  box-shadow: none, 0 0 0 0.2rem rgba(33, 150, 243, 0.5);
+}
+
+.btn-primary-favorite.disabled,
+.btn-primary-favorite:disabled {
+  color: #ffffff;
+  /*background-color: #2196f3;*/
+  /*border-color: #2196f3;*/
+}
+
+.btn-primary-favorite:not(:disabled):not(.disabled):active,
+.btn-primary-favorite:not(:disabled):not(.disabled).active,
+.show>.btn-primary-favorite.dropdown-toggle {
+  color: #ffffff;
+  /*background-color: #0c7cd5;*/
+  /*border-color: #0b75c9;*/
+}
+
+.btn-primary-favorite:not(:disabled):not(.disabled):active:focus,
+.btn-primary-favorite:not(:disabled):not(.disabled).active:focus,
+.show>.btn-primary-favorite.dropdown-toggle:focus {
+  box-shadow: none, 0 0 0 0.2rem rgba(33, 150, 243, 0.5);
+}
+
+.btn-favorite.btn-round-favorite {
+  border-radius: 30px;
+}
+
+.btn-favorite.btn-fab-favorite,
+.btn-favorite.btn-just-icon-favorite {
+  font-size: 24px;
+  height: 41px;
+  min-width: 41px;
+  width: 41px;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  line-height: 41px;
+}
+/*end сердечко*/
+
+
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial;
+}
+
+/* The grid: Four equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 20%;
+    padding: 10px;
+}
+
+/* Style the images inside the grid */
+.column img {
+    opacity: 0.8; 
+    cursor: pointer; 
+}
+
+.column img:hover {
+    opacity: 1;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* The expanding image container */
+.container-1 {
+    position: relative;
+    display: grid;
+}
+
+/* Expanding image text */
+#imgtext {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    color: white;
+    font-size: 20px;
+}
+
+/* Closable button inside the expanded image */
+.closebtn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: white;
+    font-size: 35px;
+    cursor: pointer;
+}
+
+
+
+
+
+/*drop and down file*/
+ /* layout.css Style */
+.upload-drop-zone {
+  height: 200px;
+  border-width: 2px;
+  margin-bottom: 20px;
+}
+
+/* skin.css Style*/
+.upload-drop-zone {
+  color: #ccc;
+  border-style: dashed;
+  border-color: #ccc;
+  line-height: 200px;
+  text-align: center
+}
+.upload-drop-zone.drop {
+  color: #222;
+  border-color: #222;
+}
+/*end drop and down file*/

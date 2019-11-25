@@ -1,0 +1,31 @@
+.dropdown-menu1{
+    min-width: 100%!important;
+    box-sizing: border-box!important;
+    display: block!important;
+    z-index: 1000!important;
+    float: left!important;    
+    padding: 5px 0!important;
+    margin: 2px 0 0!important;
+    font-size: 14px!important;
+    text-align: left!important;
+    list-style: none!important;
+    background-color: #fff!important;
+    background-clip: padding-box!important;
+    border: 1px solid rgba(0,0,0,.15)!important;
+    border-radius: 4px!important;
+    box-shadow: 0 6px 12px rgba(0,0,0,.175)!important;
+
+    color: #212529!important;
+
+}
+
+
+
+
+
+
+.open1{
+   
+    display: block!important;
+}
+

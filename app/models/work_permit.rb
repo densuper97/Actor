@@ -1,0 +1,2 @@
+class WorkPermit < ApplicationRecord
+end

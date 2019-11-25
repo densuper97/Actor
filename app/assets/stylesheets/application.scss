@@ -1,0 +1,209 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+ @import 'bootstrap';
+ @import 'Denis';
+ @import 'lightbox';
+
+.btn-account {
+    border: none;
+    background-color: inherit;
+    padding: 14px 7px;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
+   transition: all 0.5s;
+}
+.btn-account a{
+    text-decoration:none;
+     color: white;
+}
+.btn-account a:hover{
+    text-decoration:none;
+     color: white;
+}
+
+
+.btn-account span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.btn-account span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+
+}
+
+.btn-account:hover span {
+  padding-right: 25px;
+}
+
+.btn-account:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.edit_button #qwe{
+  position:absolute;
+   top:30px;
+   left: 90%;
+   z-index:-1;
+   transition:all 1s;
+
+ }
+ .edit_button{
+    /*background:url(http://goodfon.org/_ph/64/235694881.jpg);*/
+    /*width:100%;*/
+    /*height:30px;*/
+    position:relative;
+   
+ }
+.edit_button:hover #qwe{
+   left:93%;
+
+   z-index:1;
+   
+   }
+   .frg{
+     
+    color:#009688;
+   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+.btn-favorite {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: 0.46875rem 1rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn-favorite:hover,
+.btn-favorite:focus {
+  text-decoration: none;
+}
+
+.btn-favorite:focus,
+.btn-favorite.focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.62);
+}
+
+.btn-favorite.disabled,
+.btn-favorite:disabled {
+  opacity: 0.65;
+  box-shadow: none;
+}
+
+.btn-favorite:not(:disabled):not(.disabled) {
+  cursor: pointer;
+}
+
+.btn-favorite:not(:disabled):not(.disabled):active,
+.btn-favorite:not(:disabled):not(.disabled).active {
+  background-image: none;
+  box-shadow: none;
+}
+
+.btn-favorite:not(:disabled):not(.disabled):active:focus,
+.btn-favorite:not(:disabled):not(.disabled).active:focus {
+  box-shadow: 0 0 0 0.2rem rgba(33, 150, 243, 0.25), none;
+}
+
+a.btn-favorite.disabled,
+fieldset:disabled a.btn {
+  pointer-events: none;
+}
+
+.btn-primary-favorite {
+  color: #ffffff;
+  /*background-color: #2196f3;*/
+  /*border-color: #2196f3;*/
+  box-shadow: none;
+}
+
+.btn-primary-favorite:hover {
+  color: #ffffff;
+  /*background-color: #0c83e2;*/
+  /*border-color: #0c7cd5;*/
+}
+
+.btn-primary-favorite:focus,
+.btn-primary-favorite.focus {
+  box-shadow: none, 0 0 0 0.2rem rgba(33, 150, 243, 0.5);
+}
+
+.btn-primary-favorite.disabled,
+.btn-primary-favorite:disabled {
+  color: #ffffff;
+  /*background-color: #2196f3;*/
+  /*border-color: #2196f3;*/
+}
+
+.btn-primary-favorite:not(:disabled):not(.disabled):active,
+.btn-primary-favorite:not(:disabled):not(.disabled).active,
+.show>.btn-primary-favorite.dropdown-toggle {
+  color: #ffffff;
+  /*background-color: #0c7cd5;*/
+  /*border-color: #0b75c9;*/
+}
+
+.btn-primary-favorite:not(:disabled):not(.disabled):active:focus,
+.btn-primary-favorite:not(:disabled):not(.disabled).active:focus,
+.show>.btn-primary-favorite.dropdown-toggle:focus {
+  box-shadow: none, 0 0 0 0.2rem rgba(33, 150, 243, 0.5);
+}
+
+.btn-favorite.btn-round-favorite {
+  border-radius: 30px;
+}
+
+.btn-favorite.btn-fab-favorite,
+.btn-favorite.btn-just-icon-favorite {
+  font-size: 24px;
+  height: 41px;
+  min-width: 41px;
+  width: 41px;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  line-height: 41px;
+}

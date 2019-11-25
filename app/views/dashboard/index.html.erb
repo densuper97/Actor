@@ -1,0 +1,144 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
+<style>
+.content {
+    position: fixed;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: #f1f1f1;
+    width: 100%;
+    padding: 20px;
+}
+.is_overlay{ display: block; width: 100%; height: 100%; }
+#trailer {
+position: fixed;
+top: 0; right: 0; bottom: 0; left: 0;
+overflow: hidden;
+}
+#trailer > video {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+}
+ @media (min-aspect-ratio: 16/9) {
+     #trailer > video { height: 300%; top: -100%; }
+ }
+ @media (max-aspect-ratio: 16/9) {
+     #trailer > video { width: 300%; left: -100%; }
+ }
+ /* Если есть поддержка object-fit (Chrome/Chrome для Android, Safari в iOS 8 и Opera), используем его: */
+ @supports (object-fit: cover) {
+     #trailer > video {
+         top: 0; left: 0;
+         width: 100%; height: 100%;
+         object-fit: cover;
+     }
+ }
+.btn-12 {
+    border: none;
+    background-color: inherit;
+    padding: 8px 11px;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
+    transition: all 0.5s;
+}
+.btn-12 a{
+    text-decoration:none;
+    color: white;
+}
+.btn-12 a:hover{
+    text-decoration:none;
+    color: white;
+}
+.btn-12 span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+.btn-12 span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+    color:white;
+}
+.btn-12:hover span {
+    padding-right: 25px;
+}
+.btn-12:hover span:after {
+        padding: 7px;
+    opacity: 1;
+    right: 0;
+}
+.main-video {
+  width: 100%;
+  height: auto;
+}
+</style>
+
+<script>
+var playVideo;
+var muteVideo;
+$(document).ready(function() {
+    var video = document.getElementById("Video_page");
+    var play_name = document.getElementById("play_name");
+    var play_icon = document.getElementById("play_icon");
+    var mute_name = document.getElementById("mute_name");
+    var mute_icon = document.getElementById("mute_icon");
+
+    playVideo = function () {
+        if (video.paused) {
+            video.play();
+            play_name.innerHTML = "Pause";
+            play_icon.innerHTML = "pause";
+        } else {
+            video.pause();
+            play_name.innerHTML = "Play";
+            play_icon.innerHTML = "play_arrow";     
+        }
+    }
+
+    muteVideo = function () {
+        if (video.muted){
+            video.muted = false;
+            mute_name.innerHTML = "Volume Off";
+            mute_icon.innerHTML = "volume_up";
+        } else {
+            video.muted = true;
+            mute_name.innerHTML = "Volume On";
+            mute_icon.innerHTML = "volume_off";
+        }
+    }
+});
+</script>
+
+<div id="modal-holder"></div>
+<div class="header__video-wrapp">
+    <div id="trailer" class="is_overlay">
+        <%= video_tag "video.mp4", id:"Video_page", class: "main-video", preload: true, autoplay: true, muted: true, loop: true %>
+    </div>
+</div>
+
+<div class="content">
+    <h1>OcicatDemo</h1>
+    <div class="btn-group" style="width:100%; height:100%;">
+        <button type="button" class="button_Volume"  onclick="muteVideo()" style="color: white; border-color: #ffffff00; background-color: #ffffff00; outline: none;">
+            <div style="display:flex; align-items:center;">
+                <span class="material-icons" id="mute_icon">volume_off</span>
+                <span id='mute_name'>Volume On</span>
+            </div>
+        </button>
+        <button type="button"  onclick="playVideo()" style="color: white; border-color: #ffffff00; background-color: #ffffff00; outline: none;">
+            <div style="display:flex; align-items:center;">
+                <span class="material-icons" id="play_icon">pause</span>
+                <span id='play_name'>Pause</span>
+           </div>
+        </button>
+    </div>
+</div>

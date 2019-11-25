@@ -1,0 +1,646 @@
+<head>
+  <link href="http://ironsummitmedia.github.io/startbootstrap-grayscale/css/grayscale.css" rel="stylesheet">
+  <link href="grayscale.min.css" rel="stylesheet">
+  <link href="bootstrap.min.css" rel="stylesheet">
+  
+  <!--Jquery-->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  
+  
+  
+   <!--<link href="_mutual_desktop.css" rel="stylesheet"  >-->
+  
+  
+  
+    <link href='css/bootstrap.css' rel='stylesheet' />
+    <link href='css/rotating-card.css' rel='stylesheet' />
+
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+</head>
+
+   <body>
+    <!--Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" >
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top" style="color:#1c1b1b80" >OCICATdemo</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <!--Menu-->
+          <i class="fas fa-bars"></i>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarResponsive" style="padding-left: 0px;">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#about" style="color:#1c1b1b80" >About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#projects" style="color:#1c1b1b80">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#signup" style="color:#1c1b1b80">Contact</a>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="dropdown">
+            <% if @user %>
+                <button type="button" class="btn btn-secondary btn-sm" data-toggle="dropdown" style="background-color: #2f2e325c; color:#e0e0e0;   padding-left: 14px;
+                    border-left-width: 1px;
+                    margin-left: 200px;"><%= @user.name + " " %><span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" style="margin: 15px 200px 0px;">
+                    <li><%= link_to 'Account', account_path %></li>
+                    <li class="divider"></li>
+                    <li><%= link_to 'Log Out', logout_path %></li>
+                </ul>
+            <% else %>
+                <button type="button" class="btn btn-secondary btn-sm" data-toggle="dropdown" style="background-color: #2f2e325c; color:#e0e0e0;   padding-left: 14px;
+                    border-left-width: 1px;
+                    margin-left: 200px;">Log in <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" style="margin: 15px 200px 0px;">
+                    <li><%= link_to 'Sign In', signin_path %></li>
+                    <li class="divider"></li>
+                    <li><%= link_to 'Sign Up', signup_path %></li>
+                </ul>
+            <% end %>
+        </div>
+
+      </div>
+    </nav>
+    
+    
+    
+    <%= yield %>
+    
+    
+      <!--Header -->
+    <header class="masthead">
+      <div class="container d-flex h-100 align-items-center">
+        <div class="mx-auto text-center">
+          <h1 class="mx-auto my-0 text-uppercase">OCICAT</h1>
+          <h2 class="text-white-50 mx-auto mt-2 mb-5">Find your dream</h2>
+          <a href="#about" class="btn btn-primary js-scroll-trigger">Get Started</a>
+        </div>
+      </div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+       <div class="col-sm-10 col-sm-offset-1">
+         <div class="col-md-4 col-sm-6">
+             <div class="card-container">
+                <div class="card">
+                    <div class="front" style="height: 525px;">
+                        <div class="cover">
+                            <img src="images/large.jpg"/>
+                        </div>
+                        <div class="user">
+                            <img class="img-circle" src="images/spinner1.png"/>
+                        </div>
+                        <div class="content">
+                            <div class="main">
+                                <h3 class="name">Тренер</h3>
+                                <p class="profession">Драма</p>
+                                <p class="text-center">Футболист национальной сборной Столешников упускает решающий мяч и уходит из спорта. Юрий становится тренером маленькой команды, которая ждёт от него новых побед.</p>
+                            </div>
+                            <div class="footer">
+                                <i class="fa fa-mail-forward"></i> Auto Rotation 
+                            </div>
+                        </div>
+                    </div> <!-- end front panel -->
+                    <div class="back" style="height: 525px;">
+                        <div class="header">
+                            <h5 class="motto">2018 Россия 132 мин.</h5>
+                           
+                        </div>
+                        <div class="content">
+                            <div class="main">
+                                <!--<h4 class="text-center">Job Description</h4>-->
+                                <!--<p class="text-center">Web design, Adobe Photoshop, HTML5, CSS3, Corel and many others...</p>-->
+
+
+
+<!--<p class="font-weight-bold">Bold text.</p>-->
+<!--<p class="font-weight-normal">Normal weight text.</p>-->
+<!--<p class="font-weight-light">Light weight text.</p>-->
+<!--<p class="font-italic">Italic text.</p>-->
+
+
+<div class="container">
+            
+  <table class="table" style="width: 300px;">
+      
+      
+    <thead >
+      <tr>
+        <th>Режиссер</th>
+      </tr>
+    </thead>
+    
+    
+    <tbody>
+       
+      <tr>
+        <td >Данила Козловский</td>
+      </tr>
+      
+       <thead  >
+      <tr >
+        <th style="padding-top:30px;">В главных ролях</th>
+      </tr>
+    </thead>
+      
+       <tr >
+        <td>Данила Козловский</td>
+      </tr>
+       <tr>
+        <td>Владимир Ильин</td>
+      </tr>
+       <tr>
+        <td>Ольга Зуева</td>
+      </tr>
+      
+      
+    </tbody>
+  </table>
+</div>
+
+
+
+<!--                          <ul class="list-group list-group-flush">-->
+<!--  <li class="list-group-item">Cras justo odio</li>-->
+ 
+<!--  <li class="list-group-item">Dapibus ac facilisis in</li>-->
+<!--  <li class="list-group-item">Morbi leo risus</li>-->
+<!--  <li class="list-group-item">Porta ac consectetur ac</li>-->
+<!--  <li class="list-group-item">Vestibulum at eros</li>-->
+<!--</ul>-->
+
+                            </div>
+                        </div>
+                        <div class="footer" style="margin: 132px 0 0; ">
+                              <div class="stats-container">
+                      <div class="stats-container" style="margin-top: -40px;">
+                                    <div class="stats">
+                                        <h4>6.5</h4>
+                                        <p>
+                                            ivi
+                                        </p>
+                                    </div>
+                                    <div class="stats">
+                                        <h4>6.8</h4>
+                                        <p>
+                                            КиноПоиск
+                                        </p>
+                                    </div>
+                                    <div class="stats">
+                                        <h4>6.2</h4>
+                                        <p>
+                                            IMDb
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                                <a href="http://creative-tim.com" class="facebook"><i class="fa fa-facebook fa-fw"></i></a>
+                                <a href="http://creative-tim.com" class="google"><i class="fa fa-google-plus fa-fw"></i></a>
+                                <a href="http://creative-tim.com" class="twitter"><i class="fa fa-twitter fa-fw"></i></a>
+                            </div>
+                        </div>
+                    </div> <!-- end back panel -->
+                </div> <!-- end card -->
+            </div> <!-- end card-container -->
+        </div> <!-- end col sm 3 -->
+<!--         <div class="col-sm-1"></div> -->
+
+      
+      
+      
+      
+      
+        <div class="col-md-4 col-sm-6">
+             <div class="card-container">
+                <div class="card">
+                    <div class="front" style="height: 525px;">
+                        <div class="cover">
+                            <img src="images/serial-kuhnya.jpg"/>
+                        </div>
+                        <div class="user">
+                            <img class="img-circle" src="images/spinner2.png"/>
+                        </div>
+                        <div class="content">
+                            <div class="main">
+                                <h3 class="name">Кухня</h3>
+                                <p class="profession">Комедия</p>
+                                <p class="text-center"> Во все времена еда была рядом с людьми. Она искушает, вдохновляет, восхищает, отвращает. Но человек не может без еды, а значит тот, кто создает еду, может управлять миром… </p>
+                            </div>
+                            <div class="footer">
+                                <!--<button class="btn btn-simple" onclick="rotateCard(this)">-->
+                                    <i class="fa fa-mail-forward"></i> Auto Rotation
+                                <!--</button>-->
+                            </div>
+                        </div>
+                    </div> <!-- end front panel -->
+                    <div class="back" style="height: 525px;">
+                        <div class="header">
+                            <h5 class="motto">2012-2016 Россия</h5>
+                        </div>
+                        <div class="content">
+                            <div class="main">
+                                <!--<h4 class="text-center">Job Description</h4>-->
+                                <!--<p class="text-center">Web design, Adobe Photoshop, HTML5, CSS3, Corel and many others...</p>-->
+
+
+
+<div class="container">
+            
+  <table class="table" style="width: 300px;">
+      
+      
+    <thead >
+      <tr>
+        <th>Режиссер</th>
+      </tr>
+    </thead>
+    
+    
+    <tbody>
+       
+      <tr>
+        <td>Антон Федотов</td>
+      </tr>
+      
+       <thead>
+      <tr>
+        <th  style="padding-top:30px;">В главных ролях</th>
+      </tr>
+    </thead>
+      
+       <tr >
+        <td>Марк Богатырев</td>
+      </tr>
+       <tr>
+        <td>Дмитрий Нагиев</td>
+      </tr>
+       <tr>
+        <td>Дмитрий Назаров</td>
+      </tr>
+      
+      
+    </tbody>
+  </table>
+</div>
+                                <!--<div class="stats-container">-->
+                                <!--    <div class="stats">-->
+                                <!--        <h4>5.6</h4>-->
+                                <!--        <p>-->
+                                <!--            ivi-->
+                                <!--        </p>-->
+                                <!--    </div>-->
+                                <!--    <div class="stats">-->
+                                <!--        <h4>5.8</h4>-->
+                                <!--        <p>-->
+                                <!--            КиноПоиск-->
+                                <!--        </p>-->
+                                <!--    </div>-->
+                                <!--    <div class="stats">-->
+                                <!--        <h4>5.2</h4>-->
+                                <!--        <p>-->
+                                <!--            IMDb-->
+                                <!--        </p>-->
+                                <!--    </div>-->
+                                <!--</div>-->
+
+                            </div>
+                        </div>
+                        <div class="footer" style="margin: 132px 0 0; ">
+                          
+                            <!--<button class="btn btn-simple" rel="tooltip" title="Flip Card" onclick="rotateCard(this)">-->
+                                <!--<i class="fa fa-reply"></i> Back1-->
+                            <!--</button>-->
+                             <div class="stats-container" style="margin-top: 10px;">
+                                    <div class="stats">
+                                        <h4>5.4</h4>
+                                        <p>
+                                            ivi
+                                        </p>
+                                    </div>
+                                    <div class="stats">
+                                        <h4>5.3</h4>
+                                        <p>
+                                            КиноПоиск
+                                        </p>
+                                    </div>
+                                    <div class="stats">
+                                        <h4>5.5</h4>
+                                        <p>
+                                            IMDb
+                                        </p>
+                                    </div>
+                                </div>
+                            
+                            <div class="social-links text-center">
+                                <a href="http://creative-tim.com" class="facebook"><i class="fa fa-facebook fa-fw"></i></a>
+                                <a href="http://creative-tim.com" class="google"><i class="fa fa-google-plus fa-fw"></i></a>
+                                <a href="http://creative-tim.com" class="twitter"><i class="fa fa-twitter fa-fw"></i></a>
+                            </div>
+                        </div>
+                    </div> <!-- end back panel -->
+                </div> <!-- end card -->
+            </div> <!-- end card-container -->
+        </div> <!-- end col sm 3 -->
+<!--         <div class="col-sm-1"></div> -->
+      
+      
+      
+      
+      
+      
+
+
+
+
+ <div class="col-md-4 col-sm-6">
+             <div class="card-container">
+                <div class="card">
+                   <div class="front" style="height: 525px;">
+                        <div class="cover">
+                            <img src="images/zhenih.jpg"/>
+                        </div>
+                        <div class="user">
+                            <img class="img-circle" src="images/spinner3.png"/>
+                        </div>
+                        <div class="content">
+                            <div class="main">
+                                <h3 class="name">Жених</h3>
+                                <p class="profession">Комедия</p>
+                                <p class="text-center">"В Россию приезжает немец жениться на русской красавице Алёне, с которой они познакомились в Берлине."</p>
+                            </div>
+                            <div class="footer">
+                                <!--<button class="btn btn-simple" onclick="rotateCard(this)">-->
+                                    <i class="fa fa-mail-forward"></i> Auto Rotation
+                                <!--</button>-->
+                            </div>
+                        </div>
+                    </div> <!-- end front panel -->
+                    <div class="back" style="height: 525px;">
+                        <div class="header">
+                            <h5 class="motto">2016 Россия 88 мин.</h5>
+                        </div>
+                        <div class="content">
+                            <div class="main">
+                                <!--<h4 class="text-center">Job Description</h4>-->
+                                <!--<p class="text-center">Web design, Adobe Photoshop, HTML5, CSS3, Corel and many others...</p>-->
+
+<div class="container">
+            
+  <table class="table" style="width: 300px;">
+      
+      
+    <thead >
+      <tr>
+        <th>Режиссер</th>
+      </tr>
+    </thead>
+    
+    
+    <tbody>
+       
+      <tr>
+        <td>Александр Незлобин</td>
+      </tr>
+      
+       <thead>
+      <tr>
+        <th  style="padding-top:30px;">В главных ролях</th>
+      </tr>
+    </thead>
+      
+       <tr >
+        <td>
+Сергей Светлаков</td>
+      </tr>
+       <tr>
+        <td>Ольга Картункова</td>
+      </tr>
+       <tr>
+        <td>Сергей Бурунов</td>
+      </tr>
+      
+      
+    </tbody>
+  </table>
+</div>
+
+
+                               
+
+                            </div>
+                        </div>
+                        <div class="footer" style="margin: 132px 0 0; ">
+                            <!--<button class="btn btn-simple" rel="tooltip" title="Flip Card" onclick="rotateCard(this)">-->
+                            <!--    <i class="fa fa-reply"></i> Back-->
+                            <!--</button>-->
+                            
+                             <div class="stats-container" style="margin-top: 10px;">
+                                    <div class="stats" >
+                                        <h4>4.6</h4>
+                                        <p>
+                                            ivi
+                                        </p>
+                                    </div>
+                                    <div class="stats">
+                                        <h4>4.0</h4>
+                                        <p>
+                                            КиноПоиск
+                                        </p>
+                                    </div>
+                                    <div class="stats">
+                                        <h4>4.3</h4>
+                                        <p>
+                                            IMDb
+                                        </p>
+                                    </div>
+                                </div>
+                            
+                            
+                            <div class="social-links text-center">
+                                <a href="http://creative-tim.com" class="facebook"><i class="fa fa-facebook fa-fw"></i></a>
+                                <a href="http://creative-tim.com" class="google"><i class="fa fa-google-plus fa-fw"></i></a>
+                                <a href="http://creative-tim.com" class="twitter"><i class="fa fa-twitter fa-fw"></i></a>
+                            </div>
+                        </div>
+                    </div> <!-- end back panel -->
+                </div> <!-- end card -->
+            </div> <!-- end card-container -->
+        </div> <!-- end col sm 3 -->
+<!--         <div class="col-sm-1"></div> -->
+
+
+
+      
+      
+    </header>
+
+     <!--About Section -->
+    <!--<section id="about" class="about-section text-center">-->
+    <!--  <div class="container">-->
+    <!--    <div class="row">-->
+    <!--      <div class="col-lg-8 mx-auto">-->
+    <!--        <h2 class="text-white mb-4">Built with Bootstrap 4</h2>-->
+    <!--        <p class="text-white-50">Grayscale is a free Bootstrap theme created by Start Bootstrap. It can be yours right now, simply download the template on-->
+    <!--          <a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p>-->
+    <!--      </div>-->
+    <!--    </div>-->
+        <!--<img src="ipad.png" class="img-fluid" alt="">-->
+    <!--  </div>-->
+    <!--</section>-->
+
+     <!--Projects Section -->
+    <section id="projects" class="projects-section bg-light">
+      <div class="container">
+
+         <!--Featured Project Row -->
+        <!--<div class="row align-items-center no-gutters mb-4 mb-lg-5">-->
+        <!--  <div class="col-xl-8 col-lg-7">-->
+        <!--    <img class="img-fluid mb-3 mb-lg-0" src="bg-masthead.jpg" alt="">-->
+        <!--  </div>-->
+        <!--  <div class="col-xl-4 col-lg-5">-->
+        <!--    <div class="featured-text text-center text-lg-left">-->
+        <!--      <h4>Shoreline</h4>-->
+        <!--      <p class="text-black-50 mb-0">Grayscale is open source and MIT licensed. This means you can use it for any project - even commercial projects! Download it, customize it, and publish your website!</p>-->
+        <!--    </div>-->
+        <!--  </div>-->
+        <!--</div>-->
+
+         <!--Project One Row -->
+        <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
+          <div class="col-lg-6">
+            <!--<img class="img-fluid" src="demo-image-01.jpg" alt="">-->
+          </div>
+          <div class="col-lg-6">
+            <div class="bg-black text-center h-100 project">
+              <div class="d-flex h-100">
+                <div class="project-text w-100 my-auto text-center text-lg-left">
+                  <h4 class="text-white">Misty</h4>
+                  <p class="mb-0 text-white-50">An example of where you can put an image of a project, or anything else, along with a description.</p>
+                  <hr class="d-none d-lg-block mb-0 ml-0">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+         <!--Project Two Row -->
+        <div class="row justify-content-center no-gutters">
+          <div class="col-lg-6">
+            <!--<img class="img-fluid" src="demo-image-02.jpg" alt="">-->
+          </div>
+          <div class="col-lg-6 order-lg-first">
+            <div class="bg-black text-center h-100 project">
+              <div class="d-flex h-100">
+                <div class="project-text w-100 my-auto text-center text-lg-right">
+                  <h4 class="text-white">Mountains</h4>
+                  <p class="mb-0 text-white-50">Another example of a project with its respective description. These sections work well responsively as well, try this theme on a small screen!</p>
+                  <hr class="d-none d-lg-block mb-0 mr-0">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+     <!--Signup Section -->
+    <section id="signup" class="signup-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-10 col-lg-8 mx-auto text-center">
+
+            <i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
+            <h2 class="text-white mb-5">Subscribe to receive updates!</h2>
+
+            <form class="form-inline d-flex">
+              <input type="email" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail" placeholder="Enter email address...">
+              <button type="submit" class="btn btn-primary mx-auto">Subscribe</button>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+     <!--Contact Section -->
+    <section class="contact-section bg-black">
+      <div class="container">
+
+        <div class="row">
+
+          <div class="col-md-4 mb-3 mb-md-0">
+            <div class="card py-4 h-100">
+              <div class="card-body text-center">
+                <i class="fas fa-map-marked-alt text-primary mb-2"></i>
+                <h4 class="text-uppercase m-0">Address</h4>
+                <hr class="my-4">
+                <div class="small text-black-50">Novosibirsk</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 mb-3 mb-md-0">
+            <div class="card py-4 h-100">
+              <div class="card-body text-center">
+                <i class="fas fa-envelope text-primary mb-2"></i>
+                <h4 class="text-uppercase m-0">Email</h4>
+                <hr class="my-4">
+                <div class="small text-black-50">
+                  <a href="#">densuper97@gmail.com</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 mb-3 mb-md-0">
+            <div class="card py-4 h-100">
+              <div class="card-body text-center">
+                <i class="fas fa-mobile-alt text-primary mb-2"></i>
+                <h4 class="text-uppercase m-0">Phone</h4>
+                <hr class="my-4">
+                <div class="small text-black-50">+7 (999) 999-9999</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="social d-flex justify-content-center">
+          <a href="#" class="mx-2">
+            <i class="fa-twitter"></i>
+          </a>
+          <a href="#" class="mx-2">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="mx-2">
+            <i class="fab fa-github"></i>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+     <!--Footer -->
+    <footer class="bg-black small text-center text-white-50">
+      <div class="container">
+        Copyright &copy; Eugene, Cyril, Denis Website 2018
+      </div>
+    </footer>
+</body>

@@ -1,0 +1,74 @@
+<style>
+.btn-12 {
+    border: none;
+    background-color: inherit;
+    padding: 8px 11px;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
+    transition: all 0.5s;
+}
+.btn-12 a{
+    text-decoration:none;
+    color: white;
+}
+.btn-12 a:hover{
+    text-decoration:none;
+    color: black;
+}
+.btn-12 span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+.btn-12 span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+    color:black;
+}
+.btn-12:hover span {
+    padding-right: 25px;
+}
+.btn-12:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+</style>
+
+<nav class="fixed-top" id="mainNav" style="position: absolute;">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-auto mr-auto">
+            <div class=" btn-12">           
+                    <a class="navbar-brand js-scroll-trigger    " href="localhost:3000"   >OCICATdemo</a>
+            </div>
+
+            </div>
+           
+            <div class="col-auto" >                   
+               <div class="btn-12">
+                <% if @user %>
+
+                  <span> <%= link_to 'Log Out', logout_path, class:"btn-12"%></span>
+                <% else %>
+                  <span><%= link_to 'Sign in', signin_path, class:"btn-12",  data: { modal: true } %></span> 
+                <% end %>
+                </div>
+            </div>
+            <div class="col-auto">
+            <div class="btn-12">
+                <% if @user %>
+                   <span><%= link_to @user.login, login_path , class:"btn-12" %></span>
+                <% else %>
+                   <span><%= link_to 'Get started',  signup_path, class:"btn-12",  data: { modal: true } %></span>
+                <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

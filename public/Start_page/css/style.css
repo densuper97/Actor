@@ -1,0 +1,19 @@
+#slider {
+    margin-top:60px;
+}
+
+#slider .item {
+    height: 400px;
+    }
+#slide1{
+        background: url('Account_img/avatar.jpg') center no-repeat;
+    }
+#slide2{
+        background: url('Account_img/kuhnya.jpg') center no-repeat;
+    }
+#slide3{
+        background: url("bg-signup.jpg") center no-repeat;
+    }
+    .carousel-caption{
+        font-size:18px;
+    }

@@ -1,0 +1,115 @@
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#my_tbody tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+
+<script>
+function sortTable(n) {
+  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+  table = document.getElementById("table");
+  switching = true;
+  //Set the sorting direction to ascending:
+  dir = "asc"; 
+  /*Make a loop that will continue until
+  no switching has been done:*/
+  while (switching) {
+    //start by saying: no switching is done:
+    switching = false;
+    rows = table.rows;
+    /*Loop through all table rows (except the
+    first, which contains table headers):*/
+    for (i = 1; i < (rows.length - 1); i++) {
+      //start by saying there should be no switching:
+      shouldSwitch = false;
+      /*Get the two elements you want to compare,
+      one from current row and one from the next:*/
+      x = rows[i].getElementsByTagName("TD")[n];
+      y = rows[i + 1].getElementsByTagName("TD")[n];
+      /*check if the two rows should switch place,
+      based on the direction, asc or desc:*/
+      if (dir == "asc") {
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch= true;
+          break;
+        }
+      } else if (dir == "desc") {
+        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch = true;
+          break;
+        }
+      }
+    }
+    if (shouldSwitch) {
+      /*If a switch has been marked, make the switch
+      and mark that a switch has been done:*/
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+      //Each time a switch is done, increase this count by 1:
+      switchcount ++;      
+    } else {
+      /*If no switching has been done AND the direction is "asc",
+      set the direction to "desc" and run the while loop again.*/
+      if (switchcount == 0 && dir == "asc") {
+        dir = "desc";
+        switching = true;
+      }
+    }
+  }
+}
+</script>
+
+<h1 style="margin-right: auto; margin-left: auto; width: 25%">Manager page</h1>
+<p/>
+
+<p/>
+<div class="btn-group" style="width:10%;">
+  <%= link_to "Roles", characters_index_path, class: 'btn btn-primary', :style => "width: 50%" %>
+  <%= button_to "Add Role", new_character_url, method: :get, class: 'btn btn-primary', :style => "width: 50%" %>
+</div>
+<p/>
+<p/>
+<input class="form-control" id="myInput" type="text" style="width: 30%;" placeholder="Search..">
+<p/>
+<table class="table table-hover table-bordered" id="table" style="width:70%">
+  <thead>
+    <tr style="width: 100%">
+      <th scope="col" onclick="sortTable(0)" style="width: 10%;">#</th>
+      <th scope="col" onclick="sortTable(1)" style="width: 30%;">Photo</th>
+      <th scope="col" onclick="sortTable(2)" style="width: 30%;">Name</th>
+      <th scope="col"                        style="width: 30%;"></th>
+      <th scope="col" onclick="sortTable(4)" style="width: 30%;">Confirmed</th>
+    </tr>
+  </thead>
+  <tbody id="my_tbody">
+    <% @actors.each do |actor| %>
+      <tr class="table-<%= @table_classes[actor.confirm_status] %>">
+          <th scope="row"><%= link_to actor.id, actors_index_path("actor" => {id: actor.id}) %></th>
+          <td >
+            <% if !actor.photos.empty? %>
+              <%=  image_tag actor.photos[0].url, class: "manage_img" %>
+            <% end %>
+          </td>
+          <td><%= link_to actor.simple_full_name, actors_index_path("actor" => {id: actor.id}) %></td>
+          <td>
+            <% if actor.is_confirmed? %>
+              <%= button_to "Add Roles", new_character_url, method: :get, class: 'btn btn-primary', :style => "width: 50%" %>
+            <% end %>
+          </td>
+          <td class="align-middle">
+            <span class="glyphicon glyphicon-<%= @icon_classes[actor.confirm_status] %>" style="font-size:25px; color:<%= @icon_colors[actor.confirm_status] %>"></span>
+          </td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>

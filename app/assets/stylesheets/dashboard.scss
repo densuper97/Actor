@@ -1,0 +1,47 @@
+// Place all the styles related to the dashboard controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.btn-12 {
+    border: none;
+    background-color: inherit;
+    padding: 14px 11px;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
+    transition: all 0.5s;
+}
+.btn-12 a{
+    text-decoration:none;
+    color: white!important;
+}
+.btn-12 a:hover{
+    text-decoration:none;
+    color: white!important;
+}
+.btn-12 span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+.btn-12 span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+    color:white!important;
+}
+.btn-12:hover span {
+    padding-right: 25px;
+}
+.btn-12:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+.main-video {
+  width: 100%;
+  height: auto;
+} 
